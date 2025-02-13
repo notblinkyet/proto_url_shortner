@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+  generate:
+    desc: "Generate Go code for url_shortner.proto"
+    cmds:
+      - mkdir -p gen/go
+      - protoc -I proto proto/url_shortner.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
+  
+  clear:
+    desc: "Clear generated files"
+    cmds:
+      - rm -rf gen
